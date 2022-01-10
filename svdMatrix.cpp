@@ -22,7 +22,7 @@ void PSVDSolveRT(const std::vector<Point3d>& pts1,
 	const std::vector<Point3d>& pts2,
 	Mat& R, Mat& T)
 {
-	//点集中心
+	//鐐归泦涓績
 	Point3d p1;
 	Point3d p2;
 
@@ -34,19 +34,19 @@ void PSVDSolveRT(const std::vector<Point3d>& pts1,
 		p2 += pts2[i];
 	}
 
-	//求解质心
+	//姹傝В璐ㄥ績
 	p1 = Point3d(Vec3d(p1) / N);
 	p2 = Point3d(Vec3d(p2) / N);
 	vector<Point3d> q1(N), q2(N);
 	
-	//去掉质心
+	//鍘绘帀璐ㄥ績
 	for (int i = 0; i < N; i++)
 	{
 		q1[i] = pts1[i] - p1;
 		q2[i] = pts2[i] - p2;
 	}
 
-	//计算 q1*q2^T
+	//璁＄畻 q1*q2^T
 	Eigen::Matrix3d W = Eigen::Matrix3d::Zero();
 	for (int i = 0; i < N; i++)
 	{
